@@ -7037,7 +7037,7 @@ var Easyrtc = function() {
                 }
             }
         };
-        self.webSocket.json.emit("easyrtcCmd", dataToShip,
+        self.webSocket.emit("easyrtcCmd", dataToShip,
                 function(ackMsg) {
                     if (ackMsg.msgType === "error") {
                         self.showError(ackMsg.msgData.errorCode, ackMsg.msgData.errorText);
@@ -8644,7 +8644,7 @@ var Easyrtc = function() {
 
             logDebug("sending socket message " + JSON.stringify(dataToShip));
 
-            self.webSocket.json.emit("easyrtcCmd", dataToShip,
+            self.webSocket.emit("easyrtcCmd", dataToShip,
                     function(ackMsg) {
                         if (ackMsg.msgType !== "error") {
                             if (!ackMsg.hasOwnProperty("msgData")) {
@@ -8795,7 +8795,7 @@ var Easyrtc = function() {
         }
 
         if (self.webSocket) {
-            self.webSocket.json.emit("easyrtcMsg", outgoingMessage, ackhandler);
+            self.webSocket.emit("easyrtcMsg", outgoingMessage, ackhandler);
         }
         else {
             logDebug("websocket failed because no connection to server");
@@ -11038,7 +11038,7 @@ var Easyrtc = function() {
             callback = function() {
             };
         }
-        self.webSocket.json.emit("easyrtcCmd", dataToShip,
+        self.webSocket.emit("easyrtcCmd", dataToShip,
                 function(ackMsg) {
                     if (ackMsg.msgType === "iceConfig") {
                         processIceConfig(ackMsg.msgData.iceConfig);
@@ -11288,7 +11288,7 @@ var Easyrtc = function() {
             msgData.credential = credential;
         }
 
-        self.webSocket.json.emit(
+        self.webSocket.emit(
             "easyrtcAuth",
             {
                 msgType: "authenticate",
