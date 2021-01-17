@@ -7371,6 +7371,9 @@ var Easyrtc = function() {
             for (i = 0; i < tracks.length; i++) {
                 var track = tracks[i];
                 track.enabled = enable;
+                if (!enable) {
+                  track.stop();
+                }
             }
         }
     }
