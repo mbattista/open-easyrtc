@@ -1813,6 +1813,8 @@ var Easyrtc = function() {
                 track.enabled = enable;
                 if (!enable) {
                   track.stop();
+                } else {
+                  track.start();
                 }
             }
         }
